@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+// import { v4 as uuidv4 } from "uuid";
+import "./App.css";
 
 function App() {
+  const [exercises, setExercises] = useState([]);
+  // const [exercises, setExercises] = useState([
+  //   {
+  //     name: "Pull-ups",
+  //     id: uuidv4(),
+  //   },
+  //   {
+  //     name: "Seated Row",
+  //     id: uuidv4(),
+  //   },
+  //   {
+  //     name: "Scapular Raises",
+  //     id: uuidv4(),
+  //   },
+  // ]);
+
+  useEffect(() => {
+    axios
+      .get("https://v1.exercisedb.io/api/exercises", {
+        headers: {
+          authorization: process.env.REACT_APP_EXERCISE_API_KEY,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        setExercises(res.data);
+        console.log(exercises);
+      })
+      .catch((err) => console.log(err));
+  }, [exercises]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <h1>Workout Work Out</h1>
+        {/* <ul>
+          {exercises.map((exercise) => (
+            <li key={exercise.id}>{exercise.name}</li>
+          ))}
+        </ul> */}
+      </div>
     </div>
   );
 }
