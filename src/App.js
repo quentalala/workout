@@ -5,45 +5,30 @@ import "./App.css";
 
 function App() {
   const [exercises, setExercises] = useState([]);
-  // const [exercises, setExercises] = useState([
-  //   {
-  //     name: "Pull-ups",
-  //     id: uuidv4(),
-  //   },
-  //   {
-  //     name: "Seated Row",
-  //     id: uuidv4(),
-  //   },
-  //   {
-  //     name: "Scapular Raises",
-  //     id: uuidv4(),
-  //   },
-  // ]);
 
   useEffect(() => {
     axios
-      .get("https://v1.exercisedb.io/api/exercises", {
+      .get("https://exercisedb.p.rapidapi.com/exercises", {
         headers: {
-          authorization: process.env.REACT_APP_EXERCISE_API_KEY,
-          "Content-Type": "application/json",
+          "x-rapidapi-host": "exercisedb.p.rapidapi.com",
+          "x-rapidapi-key": process.env.REACT_APP_EXERCISE_API_KEY,
         },
       })
-      .then((res) => {
-        setExercises(res.data);
-        console.log(exercises);
+      .then(function (response) {
+        console.log(response.data);
+        setExercises(response.data);
       })
-      .catch((err) => console.log(err));
-  }, [exercises]);
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, []);
+
+  console.log(exercises);
 
   return (
     <div className="App">
       <div>
-        <h1>Workout Work Out</h1>
-        {/* <ul>
-          {exercises.map((exercise) => (
-            <li key={exercise.id}>{exercise.name}</li>
-          ))}
-        </ul> */}
+        <h1>Work Out Workout</h1>
       </div>
     </div>
   );
