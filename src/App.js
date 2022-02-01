@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import { v4 as uuidv4 } from "uuid";
 import "./App.css";
+import { Grid, Typography, Card } from "@mui/material";
 
 function App() {
   const [exercises, setExercises] = useState([]);
@@ -51,23 +52,28 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-        <h1>Work Out Workout</h1>
-        <ul>
-          {exercises
-            .filter(
-              (exercise) =>
-                exercise.bodyPart === "back" &&
-                exercise.equipment === "body weight"
-            )
-            .map((item) => (
-              <li key={item.id}>
-                <h3>{item.name}</h3>
-                <img src={item.gifUrl} alt="demo" />
-              </li>
-            ))}
-        </ul>
-      </div>
+      <Grid container>
+        <Grid item>
+          <Typography>Filter Values</Typography>
+        </Grid>
+        <Grid item>
+          <h1>Work Out Workout</h1>
+          <ul>
+            {exercises
+              .filter(
+                (exercise) =>
+                  exercise.bodyPart === "back" &&
+                  exercise.equipment === "body weight"
+              )
+              .map((item) => (
+                <li key={item.id}>
+                  <h3>{item.name}</h3>
+                  <img src={item.gifUrl} alt="demo" />
+                </li>
+              ))}
+          </ul>
+        </Grid>{" "}
+      </Grid>
     </div>
   );
 }
