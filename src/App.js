@@ -52,26 +52,43 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Work Out Workout</h1>
       <Grid container>
-        <Grid item>
+        <Grid item xs={3}>
           <Typography>Filter Values</Typography>
         </Grid>
-        <Grid item>
-          <h1>Work Out Workout</h1>
-          <ul>
-            {exercises
-              .filter(
-                (exercise) =>
-                  exercise.bodyPart === "back" &&
-                  exercise.equipment === "body weight"
-              )
-              .map((item) => (
-                <li key={item.id}>
-                  <h3>{item.name}</h3>
-                  <img src={item.gifUrl} alt="demo" />
+        <Grid container xs={9} display={"flex"}>
+          {exercises
+            .filter(
+              (exercise) =>
+                exercise.bodyPart === "back" &&
+                exercise.equipment === "body weight"
+            )
+            .map((item) => (
+              <Card xs={3} style={{ maxWidth: "350px", margin: "1rem" }}>
+                <li
+                  key={item.id}
+                  style={{ listStyle: "none", overflow: "scroll" }}
+                >
+                  <h3
+                    style={{
+                      margin: "0",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {item.name}
+                  </h3>
+                  <div style={{ maxHeight: "420px", maxWidth: "350px" }}>
+                    <img
+                      src={item.gifUrl}
+                      alt="demo"
+                      style={{ width: "100%", height: "100%" }}
+                    />
+                  </div>
                 </li>
-              ))}
-          </ul>
+              </Card>
+            ))}
         </Grid>{" "}
       </Grid>
     </div>
