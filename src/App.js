@@ -3,6 +3,7 @@ import axios from "axios";
 // import { v4 as uuidv4 } from "uuid";
 import "./App.css";
 import { Grid, Typography, Card } from "@mui/material";
+import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
   return (
     <>
       <div className="App">
+        <Header />
         <h1>Work Out Workout</h1>
         <Grid container>
           <Grid item xs={3}>
@@ -74,7 +76,7 @@ function App() {
                   </li>
                 </Card>
               ))}
-          </Grid>{" "}
+          </Grid>
         </Grid>
       </div>
       <Footer />
