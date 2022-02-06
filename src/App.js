@@ -27,34 +27,36 @@ function App() {
       });
   }, []);
 
-  // console.log(
-  //   exercises.filter(
-  //     (exercise) =>
-  //       exercise.bodyPart === "back" &&
-  //       exercise.equipment === "body weight" &&
-  //       exercise.target === "lats"
-  //   )
-  // );
-
   return (
     <>
       <div className="App">
         <Header />
-        <Typography variant="h1">Work Out Workout</Typography>
-        <Grid container>
-          <Grid item xs={3}>
+        <Typography
+          variant="h2"
+          style={{ display: "flex", justifyContent: "center", margin: "2rem" }}
+        >
+          Work Out Workout
+        </Typography>
+        <Grid container display={"flex"} justifyContent={"center"}>
+          <Grid item xs={12} md={3} display={"flex"} justifyContent={"center"}>
             <Typography>Filter Values</Typography>
           </Grid>
-          <Grid container xs={9} display={"flex"}>
-            {exercises
-              .filter(
-                (exercise) =>
-                  exercise.bodyPart === "back" &&
-                  exercise.equipment === "body weight"
-              )
-              .map((item) => (
-                <Exercise id={item.id} name={item.name} gifUrl={item.gifUrl} />
-              ))}
+          <Grid item xs={12} md={9}>
+            <Grid container display={"flex"} justifyContent={"center"}>
+              {exercises
+                .filter(
+                  (exercise) =>
+                    exercise.bodyPart === "back" &&
+                    exercise.equipment === "body weight"
+                )
+                .map((item) => (
+                  <Exercise
+                    id={item.id}
+                    name={item.name}
+                    gifUrl={item.gifUrl}
+                  />
+                ))}
+            </Grid>
           </Grid>
         </Grid>
       </div>
