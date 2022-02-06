@@ -51,6 +51,7 @@ function App() {
                 )
                 .map((item) => (
                   <Exercise
+                    key={item.id}
                     id={item.id}
                     name={item.name}
                     gifUrl={item.gifUrl}
