@@ -5,7 +5,7 @@ const Exercise = ({ id, name, gifUrl }) => {
   return (
     <Grid item key={id}>
       <Card xs={3} style={{ maxWidth: "350px", margin: "1rem" }}>
-        <li style={{ listStyle: "none", overflow: "scroll" }}>
+        <li style={{ listStyle: "none" }}>
           <Typography
             variant="h5"
             style={{
@@ -13,6 +13,9 @@ const Exercise = ({ id, name, gifUrl }) => {
               display: "flex",
               justifyContent: "center",
               textAlign: "center",
+              //   whiteSpace: "nowrap",
+              //   textOverflow: "ellipsis",
+              //   overflow: "scroll",
             }}
           >
             {name}
